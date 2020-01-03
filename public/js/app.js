@@ -19235,6 +19235,10 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+jQuery(function ($) {
+  $(document).ready(function () {});
+});
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
