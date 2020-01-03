@@ -4,13 +4,15 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>ProjectView</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <!-- <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet"> -->
+
+        <link href="{{ URL::asset('css/app.css') }}" rel="stylesheet">
 
         <!-- Styles -->
-        <style>
+        <!-- <style>
             html, body {
                 background-color: #fff;
                 color: #636b6f;
@@ -61,7 +63,7 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
-        </style>
+        </style> -->
     </head>
     <body>
         <div class="flex-center position-ref full-height">
