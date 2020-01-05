@@ -17,6 +17,7 @@ jQuery($ => {
             let loginSubmit = $('.login-form button[type="submit"]');
             let mail = $('.login-form #login-form__email');
             let password = $('.login-form #login-form__password');
+            let errorAlert = $('.login-form .alert-bad-date');
 
             $(loginSubmit).on('click', el => {
                 el.preventDefault();
@@ -34,14 +35,20 @@ jQuery($ => {
                         }
                     })
                     .done(res => {
-                        if (!res.isValid) {
+                        if (!res.isLogged) {
+                            $(errorAlert).removeClass('d-none');
                             console.log("Złe dane logowania");
                         } else {
+                            if(!$(errorAlert).hasClass('d-none')) {
+                                $(errorAlert).addClass('d-none');
+                            }
                             console.log("Ok");
+                            window.location.href = "/";
                         }
+                    })
+                    .always(res => {
+                        console.log(res);
                     });
-                // .fail(console.log('błąd'))
-                // .always(console.log('formularz logowania'));
             });
         }
 

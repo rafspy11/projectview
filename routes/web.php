@@ -13,8 +13,10 @@
 
 Route::get('/', function () {
     return view('pages.home.home');
-});
+})->name('home');
 
 Route::get('/login', 'UserController@loginForm');
+
+Route::get('/logout', 'UserController@logout');
 
 Route::post('/loginSubmit', 'UserController@loginSubmit');

@@ -19252,6 +19252,7 @@ jQuery(function ($) {
       var loginSubmit = $('.login-form button[type="submit"]');
       var mail = $('.login-form #login-form__email');
       var password = $('.login-form #login-form__password');
+      var errorAlert = $('.login-form .alert-bad-date');
       $(loginSubmit).on('click', function (el) {
         el.preventDefault();
         $.ajaxSetup({
@@ -19267,13 +19268,20 @@ jQuery(function ($) {
             password: $(password[0]).val()
           }
         }).done(function (res) {
-          if (!res.isValid) {
+          if (!res.isLogged) {
+            $(errorAlert).removeClass('d-none');
             console.log("Złe dane logowania");
           } else {
+            if (!$(errorAlert).hasClass('d-none')) {
+              $(errorAlert).addClass('d-none');
+            }
+
             console.log("Ok");
+            window.location.href = "/";
           }
-        }); // .fail(console.log('błąd'))
-        // .always(console.log('formularz logowania'));
+        }).always(function (res) {
+          console.log(res);
+        });
       });
     }
   });

@@ -4,6 +4,8 @@
 
 @section('content')
 
+@if(!Session::get('isLogged'))
+
 <section class="py-5">
     <div class="container">
         <div class="row">
@@ -13,5 +15,9 @@
         </div>
     </div>
 </section>
+
+@include('pages.login.loginForm.loginForm')
+
+@endif
 
 @endsection
