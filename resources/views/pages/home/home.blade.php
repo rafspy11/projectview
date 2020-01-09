@@ -26,8 +26,9 @@
     <div class="container">
         <div class="row">
             @foreach($projects as $project)
-            <div class="projects__item col-lg-3 col-md-4 col-sm-6">
-                {{ $project->name }}
+            <div class="projects__item col-lg-3 col-md-4 col-sm-6 {{ $project->state == 'closed' ? 'projects__item--closed' : '' }}">
+                <span class="fas fa-folder{{ $project->state == 'open' ? '-open' : '' }}"></span>
+                <a href="/project/{{ $project->id }}">{{ $project->name }}</a>
             </div>
             @endforeach
         </div>
