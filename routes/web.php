@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('pages.home.home');
-})->name('home');
+Route::get('/', 'UserController@homepage')->name('home');
 
 Route::get('/login', 'UserController@loginForm');
 

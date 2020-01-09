@@ -20,4 +20,20 @@
 
 @endif
 
+@if(Session::get('isLogged'))
+
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            @foreach($projects as $project)
+            <div class="projects__item col-lg-3 col-md-4 col-sm-6">
+                {{ $project->name }}
+            </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+@endif
+
 @endsection

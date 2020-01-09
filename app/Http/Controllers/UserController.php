@@ -11,6 +11,16 @@ use Illuminate\Support\Facades\DB;
 class UserController extends Controller
 {
     /**
+     * show all projects
+     */
+    public function homepage() {
+        $projects = DB::table('projects')
+        ->get();
+
+        return view('pages.home.home', ['projects' => $projects]);
+    }
+    
+    /**
      * display login form
      */
     public function loginForm()
@@ -55,4 +65,5 @@ class UserController extends Controller
 
         return redirect()->route('home');
     }
+
 }
