@@ -1,4 +1,34 @@
+a {
+  color: #2e2e2e;
+}
+
+.page-title {
+  font-weight: bold;
+}
+
 .projects__item .fas {
-  font-size: 1.5rem;
+  font-size: 5rem;
+}
+
+.projects__item .projects__item-link {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+          align-items: center;
+  padding: 15px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: transparent;
+  border-radius: 20px;
+}
+
+.projects__item.projects__item--add .projects__item-link {
+  border-color: #2e2e2e;
 }
 

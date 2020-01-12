@@ -1,5 +1,36 @@
+$color-primary: #2e2e2e;
+
+@mixin display-flex($dir, $wrap, $just, $align) {
+    display: flex;
+    flex-wrap: $wrap;
+    flex-direction: $dir;
+    justify-content: $just;
+    align-items: $align;
+}
+
+a {
+    color: $color-primary;
+}
+
+.page-title {
+    font-weight: bold;
+}
+
 .projects__item {
     .fas {
-        font-size: 1.5rem;
+        font-size: 5rem;
+    }
+    .projects__item-link {
+        @include display-flex(column, wrap, flex-start, center);
+        padding: 15px;
+        border-width: 2px;
+        border-style: solid;
+        border-color: transparent;
+        border-radius: 20px;
+    }
+    &.projects__item--add {
+        .projects__item-link {
+            border-color: $color-primary;
+        }
     }
 }

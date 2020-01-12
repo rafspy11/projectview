@@ -8,6 +8,8 @@
     @include('header.header')
 
     <main id="main-content" class="main-content">
+        @yield('breadcrumbs')
+        @include('title.title')
         @yield('content')
     </main>
 
