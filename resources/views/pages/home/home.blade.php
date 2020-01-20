@@ -6,22 +6,6 @@
 
 @if(Session::get('isLogged'))
 
-@section('breadcrumbs')
-
-<section class="pt-3 pb-0">
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="breadcrumbs">
-                    <a href="/">Projekty</a> / <span></span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-@endsection
-
 @section('page-title', 'Projekty')
 
 @endif

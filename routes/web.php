@@ -18,3 +18,7 @@ Route::get('/login', 'UserController@loginForm');
 Route::get('/logout', 'UserController@logout');
 
 Route::post('/loginSubmit', 'UserController@loginSubmit');
+
+Route::get('/project/add', 'UserController@addProject');
+
+Route::post('/insertProject', 'UserController@insertProject');

@@ -12,6 +12,14 @@ a {
     color: $color-primary;
 }
 
+.btn {
+    color: #ffffff;
+    background-color: $color-primary;
+    &:hover {
+        color: #ffffff;
+    }
+}
+
 .page-title {
     font-weight: bold;
 }

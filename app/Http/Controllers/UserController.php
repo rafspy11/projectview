@@ -66,4 +66,21 @@ class UserController extends Controller
         return redirect()->route('home');
     }
 
+    /**
+     * add Project
+     */
+    public function addProject() {
+        return view('pages.projects.project-add');
+    }
+
+    /**
+     * insert project to db
+     */
+    public function insertProject(Request $request) {
+        $projects = DB::table('projects')
+        ->get();
+
+        return redirect()->route('home');
+    }
+
 }
