@@ -44,6 +44,7 @@ class UserController extends Controller
         if (sizeof($users)) {
             $request->session()->put('isLogged', true);
             foreach($users as $user) {
+                $request->session()->put('loggedId', $user->id);
                 $request->session()->put('loggedMail', $user->mail);
             }
         }
@@ -61,6 +62,7 @@ class UserController extends Controller
      */
     public function logout(Request $request) {
         $request->session()->put('isLogged', false);
+        $request->session()->forget('loggedId');
         $request->session()->forget('loggedMail');
 
         return redirect()->route('home');
@@ -77,8 +79,9 @@ class UserController extends Controller
      * insert project to db
      */
     public function insertProject(Request $request) {
-        $projects = DB::table('projects')
-        ->get();
+        DB::table('projects')->insert(
+            ['name' => $request->name, 'user_id' => $request->session()->get('loggedId'), 'state' => 'open']
+        );
 
         return redirect()->route('home');
     }

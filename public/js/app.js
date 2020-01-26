@@ -19237,9 +19237,15 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 jQuery(function ($) {
   $(document).ready(function () {
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
     /**
      * init all functions
      */
+
     (function init() {
       loginSubmit();
     })();
@@ -19255,11 +19261,6 @@ jQuery(function ($) {
       var errorAlert = $('.login-form .alert-bad-date');
       $(loginSubmit).on('click', function (el) {
         el.preventDefault();
-        $.ajaxSetup({
-          headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-          }
-        });
         $.ajax({
           type: 'POST',
           url: '/loginSubmit',
