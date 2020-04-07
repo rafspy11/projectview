@@ -1,5 +1,7 @@
 $color-primary: #2e2e2e;
 
+$transition-primary: .3s all ease;
+
 @mixin display-flex($dir, $wrap, $just, $align) {
     display: flex;
     flex-wrap: $wrap;
@@ -25,7 +27,8 @@ a {
 }
 
 .projects__item {
-    .fas {
+    position: relative;
+    .projects__item-icon {
         font-size: 5rem;
     }
     .projects__item-link {
@@ -39,6 +42,16 @@ a {
     &.projects__item--add {
         .projects__item-link {
             border-color: $color-primary;
+        }
+    }
+    .projects__item-remove {
+        position: absolute;
+        top: 0;
+        right: 0;
+        cursor: pointer;
+        transition: $transition-primary;
+        &:hover {
+            opacity: .7;
         }
     }
 }

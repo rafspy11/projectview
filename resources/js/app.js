@@ -14,6 +14,7 @@ jQuery($ => {
          */
         (function init() {
             loginSubmit();
+            projectDelete();
         })();
 
         /**
@@ -49,8 +50,44 @@ jQuery($ => {
                         }
                     })
                     .always(res => {
-                        console.log(res);
+                        // console.log(res);
                     });
+            });
+        }
+
+
+        /**
+         * init modal after click 'remove project'
+         */
+        function projectDelete() {
+            let removeProjectButton = $('.projects__item-remove');
+            let removeConfirm = $('.project-remove-confirm');
+
+            $(removeProjectButton).on('click', function() {
+                localStorage.setItem('removeProject', $(this).data('id'));
+                $('#removeProjectModal').modal();
+            });
+
+            $(removeConfirm).on('click', el => {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/deleteProject',
+                    data: {
+                        projectId: localStorage.getItem('removeProject')
+                    }
+                })
+                .done(res => {
+                    window.location.href = "/";
+                })
+                .fail(res => {
+                    console.log('error');
+                });
             });
         }
 

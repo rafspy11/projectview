@@ -22,3 +22,5 @@ Route::post('/loginSubmit', 'UserController@loginSubmit');
 Route::get('/project/add', 'UserController@addProject');
 
 Route::post('/insertProject', 'UserController@insertProject');
+
+Route::post('/deleteProject', 'UserController@deleteProject');

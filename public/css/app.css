@@ -15,7 +15,11 @@ a {
   font-weight: bold;
 }
 
-.projects__item .fas {
+.projects__item {
+  position: relative;
+}
+
+.projects__item .projects__item-icon {
   font-size: 5rem;
 }
 
@@ -39,5 +43,18 @@ a {
 
 .projects__item.projects__item--add .projects__item-link {
   border-color: #2e2e2e;
+}
+
+.projects__item .projects__item-remove {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  -webkit-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+}
+
+.projects__item .projects__item-remove:hover {
+  opacity: 0.7;
 }
 

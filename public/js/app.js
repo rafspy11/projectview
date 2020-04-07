@@ -19248,6 +19248,7 @@ jQuery(function ($) {
 
     (function init() {
       loginSubmit();
+      projectDelete();
     })();
     /**
      * login form submit
@@ -19280,8 +19281,38 @@ jQuery(function ($) {
             console.log("Ok");
             window.location.href = "/";
           }
-        }).always(function (res) {
-          console.log(res);
+        }).always(function (res) {// console.log(res);
+        });
+      });
+    }
+    /**
+     * init modal after click 'remove project'
+     */
+
+
+    function projectDelete() {
+      var removeProjectButton = $('.projects__item-remove');
+      var removeConfirm = $('.project-remove-confirm');
+      $(removeProjectButton).on('click', function () {
+        localStorage.setItem('removeProject', $(this).data('id'));
+        $('#removeProjectModal').modal();
+      });
+      $(removeConfirm).on('click', function (el) {
+        $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        });
+        $.ajax({
+          type: 'POST',
+          url: '/deleteProject',
+          data: {
+            projectId: localStorage.getItem('removeProject')
+          }
+        }).done(function (res) {
+          window.location.href = "/";
+        }).fail(function (res) {
+          console.log('error');
         });
       });
     }

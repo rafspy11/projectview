@@ -36,14 +36,15 @@
         <div class="row">
             <div class="projects__item col-lg-3 col-md-4 col-sm-6 projects__item--add">
                 <a href="/project/add" class="projects__item-link">
-                    <span class="fas fa-folder-plus"></span>
+                    <span class="projects__item-icon fas fa-folder-plus"></span>
                     <span>Utwórz nowy projekt</span>
                 </a>
             </div>
             @foreach($projects as $project)
-            <div class="projects__item col-lg-3 col-md-4 col-sm-6 {{ $project->state == 'closed' ? 'projects__item--closed' : '' }}">
+            <div class="projects__item col-lg-3 col-md-4 col-sm-6  mb-4 {{ $project->state == 'closed' ? 'projects__item--closed' : '' }}">
+                <span class="projects__item-remove fas fa-trash" data-id="{{ $project->id }}"></span>
                 <a href="/project/{{ $project->id }}" class="projects__item-link">
-                    <span class="fas fa-folder{{ $project->state == 'open' ? '-open' : '' }}"></span>
+                    <span class="projects__item-icon fas fa-folder{{ $project->state == 'open' ? '-open' : '' }}"></span>
                     <span>{{ $project->name }}</span>
                 </a>
             </div>
@@ -55,3 +56,24 @@
 @endif
 
 @endsection
+
+
+<div class="modal fade" id="removeProjectModal" tabindex="-1" role="dialog" aria-labelledby="removeProjectModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="removeProjectModalLabel">Usuwanie projektu</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Czy na pewno chcesz usunąć projekt?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
+                <button type="button" class="project-remove-confirm btn btn-primary">Usuń projekt</button>
+            </div>
+        </div>
+    </div>
+</div>

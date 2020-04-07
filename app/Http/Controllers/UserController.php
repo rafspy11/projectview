@@ -86,4 +86,16 @@ class UserController extends Controller
         return redirect()->route('home');
     }
 
+
+    /**
+     * delete project to db
+     */
+    public function deleteProject(Request $request) {
+        DB::table('projects')->where([
+            ['id', '=', $request->projectId]
+        ])->delete();
+
+        return response()->json();
+    }
+
 }
